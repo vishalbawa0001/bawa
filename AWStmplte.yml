@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  RegionParameter:
+    Description: Selct Region from below
+    Type: String
+    Default: "us-east-2b"
+    AllowedValues:
+    - us-east-1
+    - "us-east-2b"
+    - N. California
+    - Oregon
+  InstanceTypeParameter:
+    Description: Select instance type
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+    - t2.micro
+    - m1.small
+    - mi.large
+
+Mappings:  
+  map0001: 
+    us-east-1: 
+      "HVM64": "ami-0130c3a072f3832ff"
+    us-east-2:
+      "HVM64": "ami-00dfe2c7ce89a450b"
+
+
+Resources:
+    EC2Instance:
+      Type: AWS::EC2::Instance               
+      Properties:
+        AvailabilityZone: !Ref RegionParameter
+        InstanceType: !Ref InstanceTypeParameter
+        ImageId:  !FindInMap [map0001, !Ref 'AWS::Region', HVM64]        
+        KeyName: "vishal"     
