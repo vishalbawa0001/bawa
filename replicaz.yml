@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    run: apache2
+  name: nginx-replicaset
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      run: apache2
+  template:
+    metadata:
+      labels:
+        run: apache2
+    spec:
+      containers:
+      - image: apache2
+        name: nginx
