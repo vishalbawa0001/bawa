@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Hi , Welcome to LAMP Server Installation."
-
 echo "DO you want an installation of LAMP Server on your device."
 
 echo "type 'yes' to install or 'no' to quit."
